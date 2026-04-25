@@ -1,0 +1,58 @@
+﻿@page
+@model InventoryTracker.Pages.Products.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="text-center bg-dark rounded-1 bg-opacity-75">
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row text-white">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="Product.Qty" class="control-label"></label>
+                <input asp-for="Product.Qty" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Product.Qty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Make" class="control-label"></label>
+                <input asp-for="Product.Make" class="form-control" />
+                <span asp-validation-for="Product.Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.CategoryId" class="control-label"></label>
+                <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.CategoryId" ></select>
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
